@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css"> 
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div id="header-logo-container" class="mobile-only-logo">
+            <img src="logo.png" alt="Логотип">
+        </div>
+        
+        <div id="header-nav-buttons">
+            <a href="index.html" id="b1" class="active-link">Словник</a>
+            <a href="about.html" id="b2">Про нас/Що це?</a>
+            <a href="404.html" id="b2"></a>
+
+        </div>
+        
+        <div id="theme-toggle-container">
+            <button id="theme-toggle" role="switch" aria-checked="false"></button> 
+        </div>
+    </header>
+    <main class="about-page-content">
+        
+        <h2>Що це?</h2> 
+        
+        <section class="what-is-it-section">
+            <div class="what-is-it-content card-style">
+                <p>Каріна любить українізовувати всі слова, пісні й усе, що чує іноземною мовою. Якось, гортаючи TikTok, вона почула, що іноземці називають борщ не українською стравою. Це її обурило, і тоді з'явилася ідея: а що, якщо замість «апупелно/чотко» казати «борщ»?</p>
+                <p>Потім Каріна придумала ще кілька слів, наліпила вареників й виставила це в TikTok - відео залетіло, і вона почала далі розкручувати цей прикол. Разом зі своїм хлопцем Андрієм вони створили сайт, де всі ці слова можна легко знайти, а також вона зробила про це відео на YouTube.</p>
+                <p class="call-to-action">А якщо хочеш додати нові слова або маєш ідеї для візуалу сайту - напиши Каріні в одній із соцмереж.</p>
+            </div>
+        </section>
+
+        <section class="authors-section">
+            <h2>Про нас</h2>
+            
+            <div class="author-card card-style">
+                <div class="author-image">
+                    <img src="photo_2025-07-05_21-55-31.jpg" alt="Фото Каріни"> 
+                </div>
+                <div>
+                    <h3>Каріна</h3>
+                    <p>Навчається на вчительку англійської й мріє стати режисеркою, але поки що кіно знімає лише в доті на Необніання Магові.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/enchunns?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a> 
+                        <a href="https://www.tiktok.com/@enchunns?is_from_webapp=1&sender_device=pc" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a> 
+                        <a href="https://www.youtube.com/@enchunns" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="author-card card-style">
+                <div class="author-image">
+                    <img src="photo_2025-08-04_07-03-04.jpg" alt="Фото Андрія"> 
+                </div>
+                <div>
+                    <h3>Андрій</h3>
+                    <p>Має дві освіти: перша бухгалтер, щоб рахувати голду в доті, а друга - дизайнера, щоб грати на красивому Зеті.</p>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/a_andreys_a/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div id="footer-top-section"></div>
+        <div id="footer-bottom-section">
+            <img id="footer-logo" src="logo.png" alt="Логотип">
+            
+            <a href="authors.html" id="footer-text">Автори</a>
+        </div>
+    </footer>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme');
+
+        // 1. Функція для встановлення теми
+        function setTheme(theme) {
+            body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.setAttribute('aria-checked', theme === 'dark'); 
+        }
+
+        // 2. Застосовуємо збережену або системну тему при завантаженні
+        if (currentTheme) {
+            setTheme(currentTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme('dark');
+        } else {
+             setTheme('light'); 
+        }
+
+        // 3. Обробник події кліку
+        themeToggle.addEventListener('click', () => {
+            const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+    </script>
+    </body>
+</html>
