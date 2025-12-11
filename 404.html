@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style2.css"> 
+    <title>404 - Сторінку не знайдено</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div id="header-logo-container" class="mobile-only-logo">
+            <img src="logo.png" alt="Логотип">
+        </div>
+        
+        <div id="header-nav-buttons">
+            <a href="index.html" id="b1">Словник</a>
+            <a href="about.html" id="b2">Про нас/Що це?</a>
+            <a href="404.html" id="b2"></a>
+
+        </div>
+        
+        <div id="theme-toggle-container">
+            <button id="theme-toggle" role="switch" aria-checked="false"></button> 
+        </div>
+    </header>
+    
+    <main class="error-page-content">
+        <div class="error-container card-style">
+            <h1 class="error-code">404</h1>
+            <h2 class="error-title">Упс! Здається, ми зварили вареники не туди.</h2>
+            <p class="error-message">Сторінки, яку ви шукаєте, не існує. Можливо, посилання застаріло, або ви помилилися в адресі.</p>
+            
+            <a href="index.html" class="home-button">
+                Повернутися на Словник
+            </a>
+        </div>
+    </main>
+    
+    <footer>
+        <div id="footer-top-section"></div>
+        <div id="footer-bottom-section">
+            <img id="footer-logo" src="logo.png" alt="Логотип">
+            
+            <a href="authors.html" id="footer-text">Автори</a>
+        </div>
+    </footer>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const currentTheme = localStorage.getItem('theme');
+
+        // 1. Функція для встановлення теми
+        function setTheme(theme) {
+            body.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            themeToggle.setAttribute('aria-checked', theme === 'dark'); 
+        }
+
+        // 2. Застосовуємо збережену або системну тему при завантаженні
+        if (currentTheme) {
+            setTheme(currentTheme);
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            setTheme('dark');
+        } else {
+             setTheme('light'); 
+        }
+
+        // 3. Обробник події кліку
+        themeToggle.addEventListener('click', () => {
+            const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+    </script>
+</body>
+</html>
